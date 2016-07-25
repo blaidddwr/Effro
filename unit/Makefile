@@ -2,7 +2,7 @@
 MAKEFLAGS := $(MAKEFLAGS) --no-print-directory
 CXX := g++
 NAME := unit
-FILES := Effro_UNIT.files
+FILES := Effro.ut.files
 
 
 
