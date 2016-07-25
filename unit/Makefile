@@ -43,8 +43,9 @@ $(build)%.o : %.cpp
 
 $(build)%.d: %.cpp
 +@echo "Building depend $(*F)."
-+@echo -n "$@ $(build)$*.d1.o $(build)$*.d2.o $(build)" > $@
-+@$(CXX) $(acxxflags) -MM $< | sed 's/.o:/.m.o:/' >> $@
++@echo -n "$@ $(build)" > $@
++@$(CXX) $(acxxflags) -MM $< >> $@
+
 
 base:
 +@echo "Building base code..."
