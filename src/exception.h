@@ -6,18 +6,18 @@
 #define EFF_DECLARE(N) \
    static inline const char* EFFRO__get__who() { return #N; }
 #define EFF_EXCEPTION(X) \
-   struct X : public ::eff::Exception\
+   struct X : public ::Effro::Exception\
    {\
       X(int l):\
-         ::eff::Exception(EFFRO__get__who(),#X,l)\
+         ::Effro::Exception(EFFRO__get__who(),#X,l)\
       {}\
    };
 #define EFF_ASSERT(T,X,L) \
-   ::eff::Exception::assert<X>(T,L);
+   ::Effro::Exception::assert<X>(T,L);
 #define EFF_CHECK(T,X,L) \
-   ::eff::Exception::assert<X>(T,L);
+   ::Effro::Exception::assert<X>(T,L);
 #define EFF_PASS(T,F,X,L) \
-   ::eff::Exception::assert<X>(T F,L);
+   ::Effro::Exception::assert<X>(T F,L);
 #define EFF_TRY(S,X,L) \
    try { S; } catch(...) { throw X(L); }
 #else
@@ -28,7 +28,7 @@
 #define EFF_PASS(T,F,X,L) F;
 #define EFF_TRY(S,X,L) S;
 #endif
-namespace eff {
+namespace Effro {
 
 
 

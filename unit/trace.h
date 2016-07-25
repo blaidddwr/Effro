@@ -2,4 +2,8 @@
 
 
 
+namespace gwr = Gwirio;
+
+
+
 void trace(gwr::UTest&);

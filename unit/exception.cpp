@@ -6,7 +6,7 @@
 
 
 
-using string = std::string;
+using std::string;
 
 
 

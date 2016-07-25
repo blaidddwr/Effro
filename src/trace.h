@@ -10,12 +10,12 @@
 #define EFF_TRACE(F,...) \
    std::ostringstream EFF__tmp__string;\
    EFF__tmp__string << F;\
-   ::eff::Trace::build(EFF__tmp__string,##__VA_ARGS__);\
-   ::eff::Trace x_trace(EFF__tmp__string.str());
+   ::Effro::Trace::build(EFF__tmp__string,##__VA_ARGS__);\
+   ::Effro::Trace x_trace(EFF__tmp__string.str());
 #else
 #define EFF_TRACE(F,...)
 #endif
-namespace eff {
+namespace Effro {
 
 
 

@@ -6,8 +6,8 @@
 
 
 
-using namespace eff;
-using string = std::string;
+using namespace Effro;
+using std::string;
 
 
 
