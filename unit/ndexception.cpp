@@ -9,7 +9,7 @@ void ndassert(gwr::UTest::Run&)
       bool test = true;
       try
       {
-         EFF_ASSERT(test=false,Foo::Bar,__LINE__);
+         ASSERT(test=false,Foo::Bar,__LINE__);
       }
       catch (...)
       {
@@ -30,7 +30,7 @@ void ndcheck(gwr::UTest::Run&)
       bool test = false;
       try
       {
-         EFF_CHECK(test=true,Foo::Bar,__LINE__);
+         CHECK(test=true,Foo::Bar,__LINE__);
       }
       catch (...)
       {
@@ -51,7 +51,7 @@ void ndpass(gwr::UTest::Run&)
       bool test = false;
       try
       {
-         EFF_PASS(false==,test=true,Foo::Bar,__LINE__);
+         PASS(false==,test=true,Foo::Bar,__LINE__);
       }
       catch (...)
       {
@@ -72,7 +72,7 @@ void ndfunc_try(gwr::UTest::Run&)
       bool test = false;
       try
       {
-         EFF_TRY(test=true,Foo::Bar,__LINE__);
+         TRY(test=true,Foo::Bar,__LINE__);
       }
       catch (...)
       {

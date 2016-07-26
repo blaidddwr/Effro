@@ -3,30 +3,32 @@
 #include <string>
 #include "trace.h"
 #ifdef DEBUG
-#define EFF_DECLARE(N) \
+#define D(X) X
+#define DECLARE(N) \
    static inline const char* EFFRO__get__who() { return #N; }
-#define EFF_EXCEPTION(X) \
+#define EXCEPTION(X) \
    struct X : public ::Effro::Exception\
    {\
       X(int l):\
          ::Effro::Exception(EFFRO__get__who(),#X,l)\
       {}\
    };
-#define EFF_ASSERT(T,X,L) \
+#define ASSERT(T,X,L) \
    ::Effro::Exception::assert<X>(T,L);
-#define EFF_CHECK(T,X,L) \
+#define CHECK(T,X,L) \
    ::Effro::Exception::assert<X>(T,L);
-#define EFF_PASS(T,F,X,L) \
+#define PASS(T,F,X,L) \
    ::Effro::Exception::assert<X>(T F,L);
-#define EFF_TRY(S,X,L) \
+#define TRY(S,X,L) \
    try { S; } catch(...) { throw X(L); }
 #else
-#define EFF_DECLARE(N)
-#define EFF_EXCEPTION(X)
-#define EFF_ASSERT(T,X,L)
-#define EFF_CHECK(T,X,L) T;
-#define EFF_PASS(T,F,X,L) F;
-#define EFF_TRY(S,X,L) S;
+#define D(X)
+#define DECLARE(N)
+#define EXCEPTION(X)
+#define ASSERT(T,X,L)
+#define CHECK(T,X,L) T;
+#define PASS(T,F,X,L) F;
+#define TRY(S,X,L) S;
 #endif
 namespace Effro {
 

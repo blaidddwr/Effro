@@ -1,8 +1,8 @@
 #define DEBUG
-#define TRACE
 #include "../src/trace.h"
 #include "trace.h"
 #include "ndtrace.h"
+#include <iostream>
 
 
 
@@ -13,7 +13,7 @@ using std::string;
 
 void bar(const char* a, float b)
 {
-   EFF_TRACE("bar(const char*,float)",a,b);
+   TRACE("bar(const char*,float)",a,b);
    Trace::lock();
 }
 
@@ -21,7 +21,7 @@ void bar(const char* a, float b)
 
 void foo(int a, int b)
 {
-   EFF_TRACE("foo(int,int)",a,b);
+   TRACE("foo(int,int)",a,b);
    bar("test",3.14);
 }
 
@@ -29,14 +29,14 @@ void foo(int a, int b)
 
 void boo(int a, int b)
 {
-   EFF_TRACE("boo(int,int)",a,b);
+   TRACE("boo(int,int)",a,b);
 }
 
 
 
 void coo(int a, int b)
 {
-   EFF_TRACE("coo(int,int)",a,b);
+   TRACE("coo(int,int)",a,b);
    boo(5,6);
    Trace::lock();
 }
@@ -45,7 +45,7 @@ void coo(int a, int b)
 
 void doo(int a, int b)
 {
-   EFF_TRACE("doo(int,int)",a,b);
+   TRACE("doo(int,int)",a,b);
    coo(3,4);
 }
 
@@ -53,7 +53,7 @@ void doo(int a, int b)
 
 void goo(int a, int b)
 {
-   EFF_TRACE("goo(int,int)",a,b);
+   TRACE("goo(int,int)",a,b);
 }
 
 

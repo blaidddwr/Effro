@@ -8,9 +8,7 @@ Exception::Exception(const string& domain, const string& what, int line):
    _what(what),
    _line(line)
 {
-#ifdef TRACE
    Trace::lock();
-#endif
 }
 
 

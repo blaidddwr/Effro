@@ -10,7 +10,7 @@ using namespace Effro;
 
 void ndfoo(int a, int b)
 {
-   EFF_TRACE("foo(int,int)",a,b);
+   TRACE("foo(int,int)",a,b);
    Trace::lock();
 }
 

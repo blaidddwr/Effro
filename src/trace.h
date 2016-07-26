@@ -3,17 +3,11 @@
 #include <string>
 #include <vector>
 #include <sstream>
-#ifdef TRACE
-#ifndef DEBUG
-#error Cannot have TRACE enabled without DEBUG being enabled!
-#endif
-#define EFF_TRACE(F,...) \
-   std::ostringstream EFF__tmp__string;\
-   EFF__tmp__string << F;\
-   ::Effro::Trace::build(EFF__tmp__string,##__VA_ARGS__);\
-   ::Effro::Trace x_trace(EFF__tmp__string.str());
+#ifdef DEBUG
+#define TRACE(F,...) \
+   ::Effro::Trace effro__track__trace(F,##__VA_ARGS__);
 #else
-#define EFF_TRACE(F,...)
+#define TRACE(F,...)
 #endif
 namespace Effro {
 
@@ -23,22 +17,32 @@ class Trace
 {
 public:
    using string = std::string;
-   using ostr = std::ostringstream;
    using Iterator = std::vector<string>::iterator;
    Trace(const string& fdesc);
+   template<class... Args> Trace(const string& fdesc,Args... args);
    ~Trace();
    static void lock();
    static void flush();
    static const Iterator begin();
    static const Iterator end();
-   static void build(ostr&) {}
+private:
+   using ostr = std::ostringstream;
+   using list = std::vector<string>;
    template<class T> static void build(ostr& str, T val);
    template<class T, class... Args> static void build(ostr& str,T val, Args... args);
-private:
-   using list = std::vector<string>;
    thread_local static list _stack;
    thread_local static bool _lock;
 };
+
+
+
+template<class... Args> Trace::Trace(const string& fdesc, Args... args)
+{
+   ostr odesc;
+   odesc << fdesc;
+   build(odesc,args...);
+   _stack.emplace_back(odesc.str());
+}
 
 
 

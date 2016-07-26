@@ -13,8 +13,8 @@ using std::string;
 class TestClass
 {
 public:
-   EFF_DECLARE(TestClass)
-   EFF_EXCEPTION(TestException)
+   DECLARE(TestClass)
+   EXCEPTION(TestException)
 };
 
 
@@ -27,7 +27,7 @@ void assert(gwr::UTest::Run& rn)
       {
          try
          {
-            EFF_ASSERT(false,TestClass::TestException,__LINE__);
+            ASSERT(false,TestClass::TestException,__LINE__);
          }
          catch (TestClass::TestException e)
          {
@@ -64,7 +64,7 @@ void assert(gwr::UTest::Run& rn)
       rn.next();
       try
       {
-         EFF_ASSERT(true,TestClass::TestException,__LINE__);
+         ASSERT(true,TestClass::TestException,__LINE__);
       }
       catch (TestClass::TestException)
       {
@@ -83,7 +83,7 @@ void check(gwr::UTest::Run& rn)
       {
          try
          {
-            EFF_CHECK(false,TestClass::TestException,__LINE__);
+            CHECK(false,TestClass::TestException,__LINE__);
          }
          catch (TestClass::TestException e)
          {
@@ -120,7 +120,7 @@ void check(gwr::UTest::Run& rn)
       rn.next();
       try
       {
-         EFF_CHECK(true,TestClass::TestException,__LINE__);
+         CHECK(true,TestClass::TestException,__LINE__);
       }
       catch (TestClass::TestException)
       {
@@ -139,7 +139,7 @@ void pass(gwr::UTest::Run& rn)
       {
          try
          {
-            EFF_PASS(1==,2,TestClass::TestException,__LINE__);
+            PASS(1==,2,TestClass::TestException,__LINE__);
          }
          catch (TestClass::TestException e)
          {
@@ -176,7 +176,7 @@ void pass(gwr::UTest::Run& rn)
       rn.next();
       try
       {
-         EFF_PASS(2==,2,TestClass::TestException,__LINE__);
+         PASS(2==,2,TestClass::TestException,__LINE__);
       }
       catch (TestClass::TestException)
       {
@@ -195,7 +195,7 @@ void func_try(gwr::UTest::Run& rn)
       {
          try
          {
-            EFF_TRY(throw int(1),TestClass::TestException,__LINE__);
+            TRY(throw int(1),TestClass::TestException,__LINE__);
          }
          catch (TestClass::TestException e)
          {
@@ -232,7 +232,7 @@ void func_try(gwr::UTest::Run& rn)
       rn.next();
       try
       {
-         EFF_TRY(;,TestClass::TestException,__LINE__);
+         TRY(;,TestClass::TestException,__LINE__);
       }
       catch (TestClass::TestException)
       {
