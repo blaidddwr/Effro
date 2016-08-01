@@ -48,14 +48,14 @@ template<class... Args> Trace::Trace(const string& fdesc, Args... args)
 
 template<class T> inline void Trace::build(ostr& str, T val)
 {
-   str << "[" << val << "]";
+   str << " [" << val << "]";
 }
 
 
 
 template<class T, class... Args> void Trace::build(ostr& str, T val, Args... args)
 {
-   str << "[" << val << "],";
+   str << " [" << val << "],";
    build(str,args...);
 }
 

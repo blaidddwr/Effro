@@ -2,7 +2,6 @@
 #include "../src/trace.h"
 #include "trace.h"
 #include "ndtrace.h"
-#include <iostream>
 
 
 
@@ -13,7 +12,7 @@ using std::string;
 
 void bar(const char* a, float b)
 {
-   TRACE("bar(const char*,float)",a,b);
+   TRACE(__PRETTY_FUNCTION__,a,b);
    Trace::lock();
 }
 
@@ -21,7 +20,7 @@ void bar(const char* a, float b)
 
 void foo(int a, int b)
 {
-   TRACE("foo(int,int)",a,b);
+   TRACE(__PRETTY_FUNCTION__,a,b);
    bar("test",3.14);
 }
 
@@ -29,14 +28,14 @@ void foo(int a, int b)
 
 void boo(int a, int b)
 {
-   TRACE("boo(int,int)",a,b);
+   TRACE(__PRETTY_FUNCTION__,a,b);
 }
 
 
 
 void coo(int a, int b)
 {
-   TRACE("coo(int,int)",a,b);
+   TRACE(__PRETTY_FUNCTION__,a,b);
    boo(5,6);
    Trace::lock();
 }
@@ -45,7 +44,7 @@ void coo(int a, int b)
 
 void doo(int a, int b)
 {
-   TRACE("doo(int,int)",a,b);
+   TRACE(__PRETTY_FUNCTION__,a,b);
    coo(3,4);
 }
 
@@ -53,7 +52,7 @@ void doo(int a, int b)
 
 void goo(int a, int b)
 {
-   TRACE("goo(int,int)",a,b);
+   TRACE(__PRETTY_FUNCTION__,a,b);
 }
 
 
@@ -63,12 +62,12 @@ void testall(gwr::UTest::Run& rn)
    {
       foo(1,2);
       auto i = Trace::begin();
-      if (*i!=string("foo(int,int)[1],[2]"))
+      if (*i!=string("void foo(int, int) [1], [2]"))
       {
          throw gwr::UTest::Run::Fail();
       }
       ++i;
-      if (*i!=string("bar(const char*,float)[test],[3.14]"))
+      if (*i!=string("void bar(const char*, float) [test], [3.14]"))
       {
          throw gwr::UTest::Run::Fail();
       }
@@ -83,12 +82,12 @@ void testall(gwr::UTest::Run& rn)
       Trace::flush();
       foo(1,2);
       auto i = Trace::begin();
-      if (*i!=string("foo(int,int)[1],[2]"))
+      if (*i!=string("void foo(int, int) [1], [2]"))
       {
          throw gwr::UTest::Run::Fail();
       }
       ++i;
-      if (*i!=string("bar(const char*,float)[test],[3.14]"))
+      if (*i!=string("void bar(const char*, float) [test], [3.14]"))
       {
          throw gwr::UTest::Run::Fail();
       }
@@ -103,12 +102,12 @@ void testall(gwr::UTest::Run& rn)
       Trace::flush();
       doo(1,2);
       auto i = Trace::begin();
-      if (*i!=string("doo(int,int)[1],[2]"))
+      if (*i!=string("void doo(int, int) [1], [2]"))
       {
          throw gwr::UTest::Run::Fail();
       }
       ++i;
-      if (*i!=string("coo(int,int)[3],[4]"))
+      if (*i!=string("void coo(int, int) [3], [4]"))
       {
          throw gwr::UTest::Run::Fail();
       }
