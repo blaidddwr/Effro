@@ -9,8 +9,8 @@ FILES := Effro.ut.files
 build := ../build/unit/
 run := ../run/
 
-acxxflags := $(CXXFLAGS) -g -std=c++11 -I../../Gwirio/include
-aldflags := $(LDFLAGS) -L../../Gwirio/lib -L../lib
+acxxflags := $(CXXFLAGS) -g -std=c++11 -I../../include
+aldflags := $(LDFLAGS) -L../../lib -L../lib
 aldlibs := $(LDLIBS) -lgwirio -leffro -lpthread
 
 progf := $(run)$(NAME)
@@ -28,7 +28,9 @@ objs := $(addprefix $(build),$(srcs:%.cpp=%.o))
 all: unit
 unit: $(progf)
 
+ifndef DEPIGNORE
 include $(dpds)
+endif
 
 $(progf): $(objs) $(dpds)
 +@echo "Building unit test."
@@ -45,7 +47,6 @@ $(build)%.d: %.cpp
 +@echo "Building depend $(*F)."
 +@echo -n "$@ $(build)" > $@
 +@$(CXX) $(acxxflags) -MM $< >> $@
-
 
 base:
 +@echo "Building base code..."

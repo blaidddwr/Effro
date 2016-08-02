@@ -1,4 +1,3 @@
-#include <gwirio.h>
 #include "exception.h"
 #include "trace.h"
 
