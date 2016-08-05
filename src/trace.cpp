@@ -3,12 +3,12 @@ namespace Effro {
 
 
 
-thread_local Trace::list Trace::_stack {};
+thread_local Trace::List Trace::_stack {};
 thread_local bool Trace::_lock {false};
 
 
 
-Trace::Trace(const string& fdesc)
+Trace::Trace(const String& fdesc)
 {
    _stack.emplace_back(fdesc);
 }

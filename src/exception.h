@@ -37,11 +37,11 @@ namespace Effro {
 class Exception
 {
 public:
-   using string = std::string;
-   Exception(const string& domain, const string& what, int line);
-   const string& domain() const;
-   const string& what() const;
-   const string& detail() const;
+   using String = std::string;
+   Exception(const String& domain, const String& what, int line);
+   const String& domain() const;
+   const String& what() const;
+   const String& detail() const;
    int line() const;
    template<class X> static void assert(bool cond, int line);
    Exception& operator<<(short);
@@ -55,11 +55,11 @@ public:
    Exception& operator<<(float);
    Exception& operator<<(double);
    Exception& operator<<(const char*);
-   Exception& operator<<(const string&);
+   Exception& operator<<(const String&);
 private:
-   string _domain;
-   string _what;
-   string _detail;
+   String _domain;
+   String _what;
+   String _detail;
    int _line;
 };
 

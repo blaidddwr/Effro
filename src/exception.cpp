@@ -3,7 +3,7 @@ namespace Effro {
 
 
 
-Exception::Exception(const string& domain, const string& what, int line):
+Exception::Exception(const String& domain, const String& what, int line):
    _domain(domain),
    _what(what),
    _line(line)
@@ -13,21 +13,21 @@ Exception::Exception(const string& domain, const string& what, int line):
 
 
 
-const Exception::string& Exception::domain() const
+const Exception::String& Exception::domain() const
 {
    return _domain;
 }
 
 
 
-const Exception::string& Exception::what() const
+const Exception::String& Exception::what() const
 {
    return _what;
 }
 
 
 
-const Exception::string& Exception::detail() const
+const Exception::String& Exception::detail() const
 {
    return _detail;
 }
@@ -129,7 +129,7 @@ Exception& Exception::operator<<(const char* n)
 
 
 
-Exception& Exception::operator<<(const string& n)
+Exception& Exception::operator<<(const String& n)
 {
    _detail += n;
    return *this;

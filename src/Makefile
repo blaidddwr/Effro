@@ -17,7 +17,7 @@ endif
 
 acxxflags := $(CXXFLAGS) -g -std=c++11
 aldflags := $(LDFLAGS)
-aldlibs := $(LDLIBS)
+aldlibs := $(LDLIBS) -lpthread
 
 libf := $(lib)lib$(NAME).a
 

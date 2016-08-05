@@ -16,29 +16,29 @@ namespace Effro {
 class Trace
 {
 public:
-   using string = std::string;
-   using Iterator = std::vector<string>::iterator;
-   Trace(const string& fdesc);
-   template<class... Args> Trace(const string& fdesc,Args... args);
+   using String = std::string;
+   using Iterator = std::vector<String>::iterator;
+   Trace(const String& fdesc);
+   template<class... Args> Trace(const String& fdesc,Args... args);
    ~Trace();
    static void lock();
    static void flush();
    static const Iterator begin();
    static const Iterator end();
 private:
-   using ostr = std::ostringstream;
-   using list = std::vector<string>;
-   template<class T> static void build(ostr& str, T val);
-   template<class T, class... Args> static void build(ostr& str,T val, Args... args);
-   thread_local static list _stack;
+   using Ostr = std::ostringstream;
+   using List = std::vector<String>;
+   template<class T> static void build(Ostr& str, T val);
+   template<class T, class... Args> static void build(Ostr& str,T val, Args... args);
+   thread_local static List _stack;
    thread_local static bool _lock;
 };
 
 
 
-template<class... Args> Trace::Trace(const string& fdesc, Args... args)
+template<class... Args> Trace::Trace(const String& fdesc, Args... args)
 {
-   ostr odesc;
+   Ostr odesc;
    odesc << fdesc;
    build(odesc,args...);
    _stack.emplace_back(odesc.str());
@@ -46,14 +46,14 @@ template<class... Args> Trace::Trace(const string& fdesc, Args... args)
 
 
 
-template<class T> inline void Trace::build(ostr& str, T val)
+template<class T> inline void Trace::build(Ostr& str, T val)
 {
    str << " [" << val << "]";
 }
 
 
 
-template<class T, class... Args> void Trace::build(ostr& str, T val, Args... args)
+template<class T, class... Args> void Trace::build(Ostr& str, T val, Args... args)
 {
    str << " [" << val << "],";
    build(str,args...);
