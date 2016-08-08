@@ -1,6 +1,6 @@
 Makefile
+../effro.h
 exception.cpp
 exception.h
 trace.cpp
 trace.h
-effro.h

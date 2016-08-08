@@ -9,7 +9,7 @@ FILES := Effro.ut.files
 build := ../build/unit/
 run := ../run/
 
-acxxflags := $(CXXFLAGS) -g -std=c++11 -I../../include
+acxxflags := $(CXXFLAGS) -g -std=c++11 -I../..
 aldflags := $(LDFLAGS) -L../../lib -L../lib
 aldlibs := $(LDLIBS) -lgwirio -leffro -lpthread
 
