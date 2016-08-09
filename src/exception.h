@@ -1,5 +1,5 @@
-#ifndef GWERS_EXCEPTION_HH
-#define GWERS_EXCEPTION_HH
+#ifndef EFFRO_EXCEPTION_HH
+#define EFFRO_EXCEPTION_HH
 #include <string>
 #include "trace.h"
 #ifdef DEBUG

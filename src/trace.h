@@ -1,5 +1,5 @@
-#ifndef GWERS_TRACE_H
-#define GWERS_TRACE_H
+#ifndef EFFRO_TRACE_H
+#define EFFRO_TRACE_H
 #include <string>
 #include <vector>
 #include <sstream>
